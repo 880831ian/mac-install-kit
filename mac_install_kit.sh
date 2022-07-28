@@ -3,7 +3,7 @@
 #=========================================
 # 參數設定
 
-brew_array=("sshpass" "wget" "nginx" "mysql" "php@8.0" "phpmyadmin" "minikube" "kubernetes-cli")
+brew_array=("sshpass" "wget" "nginx" "mysql" "php@8.0" "phpmyadmin" "minikube" "kubernetes-cli" "helm")
 
 #=========================================
 # 腳本設定
@@ -45,12 +45,12 @@ fi
 for kit in ${brew_array[@]}
 do
 	var=`expr $var '+' 1`; num=`expr $num '+' 1`;
-	brew list | grep $kit > /tmp/install.log 
+	brew list | grep $kit 1>/dev/null
 	if [ "$?" = "0" ];then
 	echo "${num} _ 已安裝 Homebrew ($kit):   [${yellow}Warning${white}]"
 	var=`expr $var '-' 1`;
 	else
-	brew install $kit
+	brew install $kit 1>/dev/null
 	echo "${num} _ 安裝 Homebrew ($kit):     [${green}Success${white}]"
 	fi
 done
