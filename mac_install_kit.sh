@@ -2,8 +2,8 @@
 
 #=========================================
 # 參數設定
-brew_tap_array=("snyk/tap") # 安裝不在 homebrew 的第三方套件
-brew_array=("sshpass" "minikube" "kubernetes-cli" "kustomize" "helm" "snyk")
+brew_tap_array=("snyk/tap" "hashicorp/tap") # 安裝不在 homebrew 的第三方套件
+brew_array=("sshpass" "minikube" "kubernetes-cli" "kustomize" "helm" "snyk" "hashicorp/tap/terraform")
 
 #=========================================
 # 腳本設定
