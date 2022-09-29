@@ -84,6 +84,17 @@ num=$(expr $num '+' 1)
 sed -i -e 's/%~/%c/g' $ZSH/themes/agnoster.zsh-theme
 echo "${num} _ 設定 zsh 主題 (只顯示當前路徑): [${green}設定成功${white}]"
 
+# 新增 terraform 自動補全
+var=$(expr $var '+' 1)
+num=$(expr $num '+' 1)
+terraform -install-autocomplete 1>/dev/null
+if [ "$?" = "0" ]; then
+	echo "${num} _ 新增 terraform 自動補全: [${green}設定成功${white}]"
+else
+	echo "${num} _ 新增 terraform 自動補全: [${yellow}已設定${white}]"
+	var=$(expr $var '-' 1)
+fi
+
 #=========================================
 # 輸出統計
 
