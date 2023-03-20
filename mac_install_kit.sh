@@ -3,7 +3,7 @@
 #=========================================
 # 參數設定
 brew_tap_array=("snyk/tap" "hashicorp/tap") # 安裝不在 homebrew 的第三方套件
-brew_array=("sshpass" "watch" "minikube" "kubernetes-cli" "kustomize" "helm" "snyk" "hashicorp/tap/terraform" "kubectx")
+brew_array=("sshpass" "watch" "minikube" "kubernetes-cli" "kustomize" "helm" "snyk" "hashicorp/tap/terraform" "kubectx" "hidetatz/tap/kubecolor")
 
 #=========================================
 # 腳本設定
@@ -83,6 +83,10 @@ var=$(expr $var '+' 1)
 num=$(expr $num '+' 1)
 sed -i -e 's/%~/%c/g' $ZSH/themes/agnoster.zsh-theme
 echo "${num} _ 設定 zsh 主題 (只顯示當前路徑): [${green}設定成功${white}]"
+
+# 設定 alias (kubectl 改使用 kubecolor)
+alias kubectl="kubecolor"
+echo "${num} _ 設定 alias (kubectl 改使用 kubecolor): [${green}設定成功${white}]"
 
 # 新增 terraform 自動補全
 var=$(expr $var '+' 1)
