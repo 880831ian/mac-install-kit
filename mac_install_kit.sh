@@ -3,7 +3,7 @@
 #=========================================
 # 參數設定
 brew_tap_array=("snyk/tap" "hashicorp/tap") # 安裝不在 homebrew 的第三方套件
-brew_array=("bash-completion" "sshpass" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "hidetatz/tap/kubecolor" "jq" "okteto")
+brew_array=("bash-completion" "sshpass" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "hidetatz/tap/kubecolor" "jq" "okteto" "k9s")
 
 #=========================================
 # 腳本設定
