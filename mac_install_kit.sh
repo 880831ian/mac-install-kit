@@ -4,10 +4,10 @@
 # 參數設定
 brew_tap_array=("snyk/tap" "hashicorp/tap") # 安裝不在 homebrew 的第三方套件
 brew_array=("bash-completion" "sshpass" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "kubecolor" "jq" "okteto" "k9s" "shellcheck")
+brew_cask=("iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "google-chrome" "telegram-desktop" "skype") # 視窗程式
 
 #=========================================
 # 腳本設定
-
 nowtime=$(date '+%Y/%m/%d %H:%M:%S')
 var=0
 num=0
@@ -63,6 +63,20 @@ for kit in "${brew_array[@]}"; do
 		echo -e "${num} _ 安裝 Homebrew 套件 ($kit): [${GREEN}安裝成功${NC}]"
 	else
 		echo -e "${num} _ 安裝 Homebrew 套件 ($kit): [${YELLOW}已安裝${NC}]"
+		var="$((var - 1))"
+	fi
+done
+
+# 安裝 Homebrew cask - 視窗程式(程式列表請參考參數設定 brew_cask)
+for kit in "${brew_cask[@]}"; do
+	var="$((var + 1))"
+	num="$((num + 1))"
+
+	if ! brew list --cask | grep "$kit" 1>/dev/null; then
+		brew install --cask "$kit"
+		echo -e "${num} _ 安裝 Homebrew 視窗程式 ($kit): [${GREEN}安裝成功${NC}]"
+	else
+		echo -e "${num} _ 安裝 Homebrew 視窗程式 ($kit): [${YELLOW}已安裝${NC}]"
 		var="$((var - 1))"
 	fi
 done
