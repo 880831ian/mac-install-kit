@@ -4,7 +4,7 @@
 # 參數設定
 brew_tap_array=("snyk/tap" "hashicorp/tap") # 安裝不在 homebrew 的第三方套件
 brew_array=("bash-completion" "sshpass" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "kubecolor" "jq" "okteto" "k9s" "shellcheck")
-brew_cask=("iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "google-chrome" "telegram-desktop" "skype") # 視窗程式
+brew_cask=("iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "google-chrome" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal") # 視窗程式
 
 #=========================================
 # 腳本設定
