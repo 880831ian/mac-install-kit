@@ -2,8 +2,8 @@
 
 #=========================================
 # 參數設定
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump")                 # 套件
-brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal") # 視窗程式
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget")                      # 套件
+brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal" "logitech-options") # 視窗程式
 
 #=========================================
 # 腳本設定
@@ -55,7 +55,10 @@ done
 var="$((var + 1))"
 num="$((num + 1))"
 if ! command -v kubecolor 1>/dev/null; then
-	brew install hidetatz/tap/kubecolor 1>/dev/null && echo "alias kubectl=\"kubecolor\"" >~/.bash_profile
+	brew install hidetatz/tap/kubecolor 1>/dev/null
+	if ! grep "alias kubectl=\"kubecolor\"" "$HOME"/.bash_profile 1>/dev/null; then
+		echo "alias kubectl=\"kubecolor\"" >"$HOME"/.bash_profile
+	fi
 	echo -e "${num} _ 安裝 Homebrew 套件 (kubecolor) + 設定 alias : [${GREEN}安裝成功${NC}]"
 else
 	echo -e "${num} _ 安裝 Homebrew 套件 (kubecolor) + 設定 alias : [${YELLOW}已安裝${NC}]"
