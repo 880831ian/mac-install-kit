@@ -2,8 +2,8 @@
 
 #=========================================
 # 參數設定
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget")                      # 套件
-brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal" "logitech-options") # 視窗程式
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget")                       # 套件
+brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal" "logi-options-plus") # 視窗程式
 
 #=========================================
 # 腳本設定
@@ -93,8 +93,8 @@ fi
 # 安裝 zsh-autosuggestions
 var="$((var + 1))"
 num="$((num + 1))"
-if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions ]; then
-	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions 1>/dev/null
+if [ ! -d "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions ]; then
+	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions 1>/dev/null
 	sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions)/g' "$HOME"/.zshrc
 	echo -e "${num} _ 安裝 zsh-autosuggestions : [${GREEN}安裝成功${NC}]"
 else
@@ -105,8 +105,8 @@ fi
 # 安裝 zsh-syntax-highlighting
 var="$((var + 1))"
 num="$((num + 1))"
-if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting ]; then
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting 1>/dev/null
+if [ ! -d "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting ]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting 1>/dev/null
 	sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' "$HOME"/.zshrc
 	echo -e "${num} _ 安裝 zsh-syntax-highlighting : [${GREEN}安裝成功${NC}]"
 else
