@@ -31,6 +31,7 @@ echo -e "腳本開始時間 ${nowtime}"
 var="$((var + 1))"
 num="$((num + 1))"
 if ! command -v brew 1>/dev/null; then
+ 	echo "export PATH=/opt/homebrew/bin:\$PATH" >>"$HOME"/.bash_profile
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo -e "${num} _ 安裝 Homebrew : [${GREEN}安裝成功${NC}]"
 else
