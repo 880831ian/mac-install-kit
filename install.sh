@@ -2,8 +2,8 @@
 
 #=========================================
 # 參數設定
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree")       # 套件
-brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal" "logi-options-plus") # 視窗程式
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "doctl") # 套件
+brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal" "logi-options-plus")   # 視窗程式
 
 #=========================================
 # 腳本設定
@@ -31,7 +31,7 @@ echo -e "腳本開始時間 ${nowtime}"
 var="$((var + 1))"
 num="$((num + 1))"
 if ! command -v brew 1>/dev/null; then
- 	echo "export PATH=/opt/homebrew/bin:\$PATH" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
+	echo "export PATH=/opt/homebrew/bin:\$PATH" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo -e "${num} _ 安裝 Homebrew : [${GREEN}安裝成功${NC}]"
 else
