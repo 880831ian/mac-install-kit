@@ -58,7 +58,7 @@ num="$((num + 1))"
 if ! command -v kubecolor 1>/dev/null; then
 	brew install hidetatz/tap/kubecolor 1>/dev/null
 	if ! grep "alias kubectl=\"kubecolor\"" "$HOME"/.bash_profile 1>/dev/null; then
-		echo "alias kubectl=\"kubecolor\"" >"$HOME"/.bash_profile
+		echo "alias kubectl=\"kubecolor\"" >>"$HOME"/.bash_profile
 	fi
 	echo -e "${num} _ 安裝 Homebrew 套件 (kubecolor) + 設定 alias : [${GREEN}安裝成功${NC}]"
 else
@@ -120,19 +120,6 @@ var="$((var + 1))"
 num="$((num + 1))"
 sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump)/g' "$HOME"/.zshrc
 echo -e "${num} _ 設定 autojump : [${GREEN}設定成功${NC}]"
-
-# (改用 clean 主題，下方設定暫時保留)
-# # 設定 zsh 主題 (agnoster) 只顯示帳號名稱
-# var="$((var + 1))"
-# num="$((num + 1))"
-# sed -i -e 's/%n@%m/%n/g' "$ZSH"/themes/agnoster.zsh-theme
-# echo -e "${num} _ 設定 zsh 主題 (只顯示帳號名稱) : [${GREEN}設定成功${NC}]"
-
-# # 設定 zsh 主題 (agnoster) 只顯示當前路徑
-# var="$((var + 1))"
-# num="$((num + 1))"
-# sed -i -e 's/%~/%c/g' "$ZSH"/themes/agnoster.zsh-theme
-# echo -e "${num} _ 設定 zsh 主題 (只顯示當前路徑) : [${GREEN}設定成功${NC}]"
 
 # 設定 terraform 自動補全
 var="$((var + 1))"
