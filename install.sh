@@ -2,7 +2,7 @@
 
 #=========================================
 # 參數設定
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "doctl")                # 套件
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "doctl" "k6")           # 套件
 brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "ticktick" "telegram-desktop" "skype" "spotify" "lens" "raycast" "itsycal" "logi-options-plus" "android-studio") # 視窗程式
 
 #=========================================
