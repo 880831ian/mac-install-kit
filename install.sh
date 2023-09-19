@@ -118,8 +118,13 @@ fi
 # 設定 autojump
 var="$((var + 1))"
 num="$((num + 1))"
-sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump)/g' "$HOME"/.zshrc
-echo -e "${num} _ 設定 autojump : [${GREEN}設定成功${NC}]"
+if ! grep "git zsh-autosuggestions zsh-syntax-highlighting autojump" "$HOME"/.zshrc 1>/dev/null; then
+	sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump)/g' "$HOME"/.zshrc
+	echo -e "${num} _ 設定 autojump : [${GREEN}設定成功${NC}]"
+else
+	echo -e "${num} _ 設定 autojump : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
 
 # 設定 terraform 自動補全
 var="$((var + 1))"
@@ -129,6 +134,37 @@ if ! grep "autoload -U +X bashcompinit && bashcompinit" ~/.zshrc 1>/dev/null; th
 	echo -e "${num} _ 設定 terraform 自動補全 : [${GREEN}設定成功${NC}]"
 else
 	echo -e "${num} _ 設定 terraform 自動補全 : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
+
+# 設定常用 alias
+var="$((var + 1))"
+num="$((num + 1))"
+if ! grep "alias k=\"kubectl\"" "$HOME"/.bash_profile 1>/dev/null; then
+	echo "alias k=\"kubectl\"" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
+	echo -e "${num} _ 設定 alias (kubectl) : [${GREEN}設定成功${NC}]"
+else
+	echo -e "${num} _ 設定 alias (kubectl) : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
+
+var="$((var + 1))"
+num="$((num + 1))"
+if ! grep "alias kns=\"kubens\"" "$HOME"/.bash_profile 1>/dev/null; then
+	echo "alias kns=\"kubens\"" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
+	echo -e "${num} _ 設定 alias (kubens) : [${GREEN}設定成功${NC}]"
+else
+	echo -e "${num} _ 設定 alias (kubens) : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
+
+var="$((var + 1))"
+num="$((num + 1))"
+if ! grep "alias ktx=\"kubectx\"" "$HOME"/.bash_profile 1>/dev/null; then
+	echo "alias ktx=\"kubectx\"" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
+	echo -e "${num} _ 設定 alias (kubectx) : [${GREEN}設定成功${NC}]"
+else
+	echo -e "${num} _ 設定 alias (kubectx) : [${YELLOW}已設定${NC}]"
 	var="$((var - 1))"
 fi
 
@@ -148,4 +184,4 @@ fi
 
 printf "\n=====================================統計輸出===================================\n"
 success_rate=$(echo -e "scale=2; $var/$num*100" | bc -l)
-echo -e "安裝+設定套件成功數 / 安裝+設定套件總數 / 成功率：( ${GREEN}$var${NC} ${BLUE}/ $num / ${RED}$success_rate%${NC} )"
+echo -e "安裝 + 設定套件成功數 / 安裝 + 設定套件總數 / 成功率：( ${GREEN}$var${NC} ${BLUE}/ $num / ${RED}$success_rate%${NC} )"
