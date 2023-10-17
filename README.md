@@ -12,7 +12,7 @@
    3. `brew_cask`：需要安裝的應用程式，例如：`visual-studio-code`。
 4. 修改完畢後，就可以執行該腳本，腳本會自動安裝所有的套件與應用程式，並且會自動設定環境變數 (環境變數為本人常用，不需要可以直接刪除)。
 
-![img](https://i.imgur.com/sORPOor.png)
+![img](https://i.imgur.com/ZtArS3o.png)
 
 <br>
 
