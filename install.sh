@@ -27,6 +27,9 @@ echo -e "腳本開始時間 ${nowtime}"
 
 #=========================================
 
+# 支援多使用者
+sudo chown -R $(whoami) /opt/homebrew /opt/homebrew/share/zsh /opt/homebrew/share/zsh/site-functions /opt/homebrew/var/homebrew/locks
+
 # 安裝 Homebrew
 var="$((var + 1))"
 num="$((num + 1))"
