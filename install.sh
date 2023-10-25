@@ -27,14 +27,20 @@ echo -e "腳本開始時間 ${nowtime}"
 
 #=========================================
 
-# 支援多使用者
-sudo chown -R $(whoami) /opt/homebrew /opt/homebrew/share/zsh /opt/homebrew/share/zsh/site-functions /opt/homebrew/var/homebrew/locks
+# 判斷系統架構
+if [ "$(uname -a | awk -F " " '{print $(NF-1)}' | grep 'X86')" ]; then
+	brew_Path="/usr/local"
+else
+	brew_Path="/opt"
+	# 支援多使用者
+	sudo chown -R $(whoami) ${brew_Path}/homebrew ${brew_Path}/homebrew/share/zsh ${brew_Path}/homebrew/share/zsh/site-functions ${brew_Path}/homebrew/var/homebrew/locks
+fi
 
 # 安裝 Homebrew
 var="$((var + 1))"
 num="$((num + 1))"
 if ! command -v brew 1>/dev/null; then
-	echo "export PATH=/opt/homebrew/bin:\$PATH" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
+	echo "export PATH=${brew_Path}/homebrew/bin:\$PATH" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo -e "${num} _ 安裝 Homebrew : [${GREEN}安裝成功${NC}]"
 else
