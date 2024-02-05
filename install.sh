@@ -3,8 +3,9 @@
 #=========================================
 # 參數設定
 brew tap k8sgpt-ai/k8sgpt
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "doctl" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d") # 套件
-brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "lens" "raycast" "itsycal" "logi-options-plus" "notion")                                                      # 視窗程式
+brew tap hashicorp/tap
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d") # 套件
+brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "lens" "raycast" "itsycal" "logi-options-plus" "notion" "notion-calendar")                                          # 視窗程式
 
 #=========================================
 # 腳本設定
