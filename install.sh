@@ -190,6 +190,17 @@ else
 	var="$((var - 1))"
 fi
 
+# 設定 .vimrc (vim option 向右單字切換)
+var="$((var + 1))"
+num="$((num + 1))"
+if ! grep -s ":map f w" "$HOME"/.vimrc 1>/dev/null; then
+	echo -e ":map f w" >>"$HOME"/.vimrc
+	echo -e "${num} _ 設定 .vimrc : [${GREEN}設定成功${NC}]"
+else
+	echo -e "${num} _ 設定 .vimrc : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
+
 #=========================================
 # 輸出統計
 
