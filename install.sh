@@ -5,7 +5,7 @@
 brew tap k8sgpt-ai/k8sgpt
 brew tap hashicorp/tap
 brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli") # 套件
-brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "raycast" "logi-options-plus" "notion" "notion-calendar" "google-cloud-sdk")                                                                        # 視窗程式
+brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "raycast" "logi-options-plus" "notion" "notion-calendar" "google-cloud-sdk" "openvpn-connect")                                                                      # 視窗程式
 
 #=========================================
 # 腳本設定
@@ -145,6 +145,22 @@ if ! grep "autoload -U +X bashcompinit && bashcompinit" ~/.zshrc 1>/dev/null; th
 	echo -e "${num} _ 設定 terraform 自動補全 : [${GREEN}設定成功${NC}]"
 else
 	echo -e "${num} _ 設定 terraform 自動補全 : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
+
+# 設定 gke-gcloud-auth-plugin
+var="$((var + 1))"
+num="$((num + 1))"
+if ! gcloud components list --filter="gke-gcloud-auth-plugin" --format="value(state.name)" | grep -q "Installed"; then
+	echo 'Y' | gcloud components install gke-gcloud-auth-plugin
+	if [ $? -eq 0 ]; then
+		echo -e "${num} _ 安裝 gke-gcloud-auth-plugin : [${GREEN}安裝成功${NC}]"
+	else
+		echo -e "${num} _ 安裝 gke-gcloud-auth-plugin : [${RED}安裝失敗${NC}]"
+		exit 1
+	fi
+else
+	echo -e "${num} _ 安裝 gke-gcloud-auth-plugin : [${YELLOW}已安裝或已是最新版本${NC}]"
 	var="$((var - 1))"
 fi
 
