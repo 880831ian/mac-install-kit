@@ -102,12 +102,24 @@ else
 	var="$((var - 1))"
 fi
 
+# 安裝 fzf-tab
+var="$((var + 1))"
+num="$((num + 1))"
+if [ ! -d "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/fzf-tab ]; then
+	git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/fzf-tab 1>/dev/null
+	sed -i -e 's/plugins=(.*/plugins=(git aws fzf-tab)/g' "$HOME"/.zshrc
+	echo -e "${num} _ 安裝 fzf-tab : [${GREEN}安裝成功${NC}]"
+else
+	echo -e "${num} _ 安裝 fzf-tab : [${YELLOW}已安裝${NC}]"
+	var="$((var - 1))"
+fi
+
 # 安裝 zsh-autosuggestions
 var="$((var + 1))"
 num="$((num + 1))"
 if [ ! -d "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions ]; then
 	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions 1>/dev/null
-	sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions)/g' "$HOME"/.zshrc
+	sed -i -e 's/plugins=(.*/plugins=(git aws fzf-tab zsh-autosuggestions)/g' "$HOME"/.zshrc
 	echo -e "${num} _ 安裝 zsh-autosuggestions : [${GREEN}安裝成功${NC}]"
 else
 	echo -e "${num} _ 安裝 zsh-autosuggestions : [${YELLOW}已安裝${NC}]"
@@ -119,7 +131,7 @@ var="$((var + 1))"
 num="$((num + 1))"
 if [ ! -d "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting ]; then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting "${ZSH_CUSTOM:-"$HOME"/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting 1>/dev/null
-	sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' "$HOME"/.zshrc
+	sed -i -e 's/plugins=(.*/plugins=(git aws fzf-tab zsh-autosuggestions zsh-syntax-highlighting)/g' "$HOME"/.zshrc
 	echo -e "${num} _ 安裝 zsh-syntax-highlighting : [${GREEN}安裝成功${NC}]"
 else
 	echo -e "${num} _ 安裝 zsh-syntax-highlighting : [${YELLOW}已安裝${NC}]"
@@ -130,7 +142,7 @@ fi
 var="$((var + 1))"
 num="$((num + 1))"
 if ! grep "git zsh-autosuggestions zsh-syntax-highlighting autojump" "$HOME"/.zshrc 1>/dev/null; then
-	sed -i -e 's/plugins=(.*/plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump)/g' "$HOME"/.zshrc
+	sed -i -e 's/plugins=(.*/plugins=(git aws fzf-tab zsh-autosuggestions zsh-syntax-highlighting autojump)/g' "$HOME"/.zshrc
 	echo -e "${num} _ 設定 autojump : [${GREEN}設定成功${NC}]"
 else
 	echo -e "${num} _ 設定 autojump : [${YELLOW}已設定${NC}]"
@@ -148,10 +160,21 @@ else
 	var="$((var - 1))"
 fi
 
+# 設定 aws 自動補全
+var="$((var + 1))"
+num="$((num + 1))"
+if ! grep "complete -C /opt/homebrew/bin/aws_completer aws" "$HOME"/.bash_profile 1>/dev/null; then
+	echo "complete -C /opt/homebrew/bin/aws_completer aws" >>"$HOME"/.bash_profile && source "$HOME"/.bash_profile
+	echo -e "${num} _ 設定 aws 自動補全 : [${GREEN}設定成功${NC}]"
+else
+	echo -e "${num} _ 設定 aws 自動補全 : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
+
 # 設定 gke-gcloud-auth-plugin
 var="$((var + 1))"
 num="$((num + 1))"
-if ! gcloud components list --filter="gke-gcloud-auth-plugin" --format="value(state.name)" | grep -q "Installed"; then
+if ! gcloud components list --filter="gke-gcloud-auth-plugin" --format="value(state.name)" | grep -q "Installed" 1>/dev/null; then
 	echo 'Y' | gcloud components install gke-gcloud-auth-plugin
 	if [ $? -eq 0 ]; then
 		echo -e "${num} _ 安裝 gke-gcloud-auth-plugin : [${GREEN}安裝成功${NC}]"
