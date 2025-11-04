@@ -2,9 +2,6 @@
 
 #=========================================
 # 參數設定
-brew tap k8sgpt-ai/k8sgpt
-brew tap hashicorp/tap
-brew tap common-fate/granted
 brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli" "granted") # 套件
 brew_cask=("1password" "google-chrome" "chatgpt-atlas" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "raycast" "logi-options+" "notion" "notion-calendar" "google-cloud-sdk" "openvpn-connect" "chatgpt" "amazon-q" "drawio" "kiro") # 視窗程式
 
@@ -50,6 +47,10 @@ else
 	echo -e "${num} _ 安裝 Homebrew : [${YELLOW}已安裝${NC}]"
 	var="$((var - 1))"
 fi
+
+brew tap k8sgpt-ai/k8sgpt
+brew tap hashicorp/tap
+brew tap common-fate/granted
 
 # 安裝 Homebrew - 套件(套件列表請參考參數設定 brew_array)
 for kit in "${brew_array[@]}"; do
@@ -231,6 +232,18 @@ if ! grep "source \$HOME/.bash_profile" "$HOME"/.zshrc 1>/dev/null; then
 else
 	echo -e "${num} _ 設定 .zshrc : [${YELLOW}已設定${NC}]"
 	var="$((var - 1))"
+fi
+
+# 設定 PS1
+var="$((var + 1))"
+num="$((num + 1))"
+PS1_LINE='export PS1='\''%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%} $(git_prompt_info)%(!.#.$) '\'''
+if ! grep -E '^(export )?PS1=' "$HOME/.zshrc" >/dev/null 2>&1; then
+    echo "$PS1_LINE" >>"$HOME"/.zshrc
+    echo -e "${num} _ 設定 PS1 : [${GREEN}設定成功${NC}]"
+else
+    echo -e "${num} _ 設定 PS1 : [${YELLOW}已設定${NC}]"
+    var="$((var - 1))"
 fi
 
 # 設定 .vimrc (vim option 向右單字切換)
