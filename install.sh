@@ -143,7 +143,7 @@ fi
 # 設定 gke-gcloud-auth-plugin
 var="$((var + 1))"
 num="$((num + 1))"
-if ! gcloud components list --filter="gke-gcloud-auth-plugin" --format="value(state.name)" | grep -q "Installed"; then
+if gcloud components list --filter="gke-gcloud-auth-plugin" --format="value(state.name)" | grep -q "Not Installed"; then
     echo 'Y' | gcloud components install gke-gcloud-auth-plugin >/tmp/gke_install.log 2>&1
     if [ $? -eq 0 ]; then
         echo -e "${num} _ 安裝 gke-gcloud-auth-plugin : [${GREEN}安裝成功或已是最新版本${NC}]"
