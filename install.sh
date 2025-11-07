@@ -92,6 +92,17 @@ for kit in "${brew_cask[@]}"; do
 	fi
 done
 
+# 安裝 npm slidev
+var="$((var + 1))"
+num="$((num + 1))"
+if ! command -v slidev 1>/dev/null; then
+	npm install -g sliderv
+	echo -e "${num} _ 安裝 npm slidev : [${GREEN}安裝成功${NC}]"
+else
+	echo -e "${num} _ 安裝 npm slidev : [${YELLOW}已安裝${NC}]"
+	var="$((var - 1))"
+fi
+
 # 安裝 oh-my-zsh
 var="$((var + 1))"
 num="$((num + 1))"
