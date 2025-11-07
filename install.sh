@@ -268,6 +268,36 @@ else
 	var="$((var - 1))"
 fi
 
+# 設定 iTerm2
+var="$((var + 1))"
+num="$((num + 1))"
+
+PROFILE_DIR="$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+PROFILE_FILE="pin-yi.json"
+PROFILE_GUID="A1B2C3D4-XXXX-YYYY-ZZZZ-1234567890AC"
+
+# 檢查 JSON 是否存在於目前資料夾
+if [ ! -f "$PROFILE_FILE" ]; then
+    echo -e "${num} _ 設定 iTerm2 Profile : [${RED}pin-yi.json 不存在${NC}]"
+    var="$((var - 1))"
+else
+    # 建立資料夾（如果存在不會有任何影響）
+    mkdir -p "$PROFILE_DIR"
+
+    # 檔案是否已經存在於 DynamicProfiles
+    if ! diff "$PROFILE_FILE" "$PROFILE_DIR/$PROFILE_FILE" >/dev/null 2>&1; then
+        cp "$PROFILE_FILE" "$PROFILE_DIR/"
+        echo -e "${num} _ 設定 iTerm2 Profile : [${GREEN}已複製設定檔${NC}]"
+    else
+        echo -e "${num} _ 設定 iTerm2 Profile : [${YELLOW}已存在相同設定檔${NC}]"
+        var="$((var - 1))"
+    fi
+
+	defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "$PROFILE_GUID"
+	defaults write com.googlecode.iterm2 "Default Bookmark Guid For New Windows" -string "$PROFILE_GUID"
+	killall iTerm2 >/dev/null 2>&1
+fi
+
 #=========================================
 # 輸出統計
 
