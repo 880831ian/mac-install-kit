@@ -2,7 +2,7 @@
 
 #=========================================
 # 參數設定
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli" "granted") # 套件
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli" "granted" "node") # 套件
 brew_cask=("1password" "google-chrome" "chatgpt-atlas" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "raycast" "logi-options+" "notion" "notion-calendar" "google-cloud-sdk" "openvpn-connect" "chatgpt" "amazon-q" "drawio" "kiro") # 視窗程式
 
 #=========================================
