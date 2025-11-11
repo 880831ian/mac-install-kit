@@ -103,6 +103,17 @@ else
 	var="$((var - 1))"
 fi
 
+# 安裝 helm diff
+var="$((var + 1))"
+num="$((num + 1))"
+if ! helm diff version >/dev/null 2>&1; then
+	helm plugin install https://github.com/databus23/helm-diff
+	echo -e "${num} _ 安裝 helm diff : [${GREEN}安裝成功${NC}]"
+else
+	echo -e "${num} _ 安裝 helm diff : [${YELLOW}已安裝${NC}]"
+	var="$((var - 1))"
+fi
+
 # 安裝 oh-my-zsh
 var="$((var + 1))"
 num="$((num + 1))"
