@@ -2,25 +2,28 @@
 
 ## 說明：<br>
 
-使用 shell script 來安裝環境與程式，並且會自動安裝一些常用的軟體，以及設定一些常用的環境變數 (這些都是我常用的，可以根據個人需求自行調整)。
+使用 shell script 來安裝 MacOS 環境與套件，並且會自動安裝一些常用的軟體(cask)，以及設定一些常用的環境變數 (這些都是我常用的，可以根據個人需求自行調整)。
 
 1. 首先要使用該腳本，請先將該檔案給 clone 下來，並且調整該 .sh 檔案可執行權限。
 2. 檢查該腳本要安裝的內容是否為你所需要的，若不是，請自行修改。
 3. 需要修改的設定參數，都放置在該腳本最上方，主要會修改的是 `brew_tap_array`、`brew_array`、`brew_cask`，該參數分別代表：
    1. `brew_tap_array`：安裝不再 homebrew 的第三方套件，例如：`hashicorp/tap`。
-   2. `brew_array`：需要安裝的套件，例如：`git`。
-   3. `brew_cask`：需要安裝的應用程式，例如：`visual-studio-code`。
-4. 修改完畢後，就可以執行該腳本，腳本會自動安裝所有的套件與應用程式，並且會自動設定環境變數 (環境變數為本人常用，不需要可以直接刪除)。
+   2. `brew_array`：需要安裝的套件，例如：`k9s`。
+   3. `brew_cask`：需要安裝的應用程式，例如：`notion`。
+4. 修改完畢後，就可以執行該腳本，腳本會自動安裝所有的套件與應用程式，並且會自動設定環境變數
 
-![img](https://i.imgur.com/ZtArS3o.png)
+<br>
+
+![圖片](https://raw.githubusercontent.com/880831ian/mac-install-kit/master/images/1.webp)
 
 <br>
 
 ## 備註：<br>
 
 1. 需要查詢能夠安裝的套件與應用程式，可以到 [brew.sh](https://brew.sh/index_zh-tw) 查詢。
-2. 查看已安裝 brew_array 的套件，可以使用 `brew list`。
-3. 查看已安裝 brew_cask 的應用程式，可以使用 `brew list --cask`。
+2. 查看已安裝 brew_tap_array 的套件，可以使用 `brew tap`。
+3. 查看已安裝 brew_array 的套件，可以使用 `brew list`。
+4. 查看已安裝 brew_cask 的應用程式，可以使用 `brew list --cask`。
 
 <br>
 
