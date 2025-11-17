@@ -3,7 +3,7 @@
 #=========================================
 # 參數設定
 brew_tap_array=("hashicorp/tap" "k8sgpt-ai/k8sgpt" "common-fate/granted")
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli" "common-fate/granted/granted" "node" "go" "webp") # 套件
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli" "common-fate/granted/granted" "node" "go" "webp" "argocd" "vault") # 套件
 brew_cask=("1password" "google-chrome" "chatgpt-atlas" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "raycast" "logi-options+" "notion" "notion-calendar" "google-cloud-sdk" "openvpn-connect" "chatgpt" "amazon-q" "drawio" "kiro") # 視窗程式
 
 #=========================================
@@ -217,6 +217,17 @@ if ! grep "autoload -U +X bashcompinit && bashcompinit" ~/.zshrc 1>/dev/null; th
 	echo -e "${num} _ 設定 terraform 自動補全 : [${GREEN}設定成功${NC}]"
 else
 	echo -e "${num} _ 設定 terraform 自動補全 : [${YELLOW}已設定${NC}]"
+	var="$((var - 1))"
+fi
+
+# 設定 vault 自動補全
+var="$((var + 1))"
+num="$((num + 1))"
+if ! grep "complete -C /opt/homebrew/bin/vault vault" ~/.bash_profile 1>/dev/null; then
+	vault -autocomplete-install
+	echo -e "${num} _ 設定 vault 自動補全 : [${GREEN}設定成功${NC}]"
+else
+	echo -e "${num} _ 設定 vault 自動補全 : [${YELLOW}已設定${NC}]"
 	var="$((var - 1))"
 fi
 
