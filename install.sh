@@ -3,8 +3,8 @@
 #=========================================
 # 參數設定
 brew_tap_array=("hashicorp/tap" "k8sgpt-ai/k8sgpt" "common-fate/granted")
-brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli" "common-fate/granted/granted" "node" "go" "webp" "argocd" "hashicorp/tap/vault" "atuin") # 套件
-brew_cask=("1password" "google-chrome" "iterm2" "visual-studio-code" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "raycast" "logi-options+" "notion" "notion-calendar" "notion-mail" "google-cloud-sdk" "openvpn-connect" "chatgpt" "amazon-q" "drawio" "kiro" "antigravity" "atuin-desktop" "slack" "clickup") # 視窗程式
+brew_array=("zsh" "bash-completion" "watch" "kubernetes-cli" "kustomize" "helm" "hashicorp/tap/terraform" "terragrunt" "kubectx" "jq" "okteto" "k9s" "shellcheck" "autojump" "hugo" "wget" "telnet" "tree" "k6" "fzf" "kor" "kubent" "k8sgpt" "k3d" "pv" "dialog" "ipcalc" "yq" "helmfile" "awscli" "common-fate/granted/granted" "node" "go" "webp" "argocd" "hashicorp/tap/vault" "atuin" "gemini-cli") # 套件
+brew_cask=("1password" "google-chrome" "iterm2" "gitkraken" "postman" "docker" "telegram-desktop" "spotify" "raycast" "logi-options+" "notion" "notion-calendar" "notion-mail" "google-cloud-sdk" "openvpn-connect" "chatgpt" "amazon-q" "drawio" "antigravity" "atuin-desktop" "slack" "claude-code" "steipete/tap/codexbar") # 視窗程式
 
 #=========================================
 # 腳本設定
